@@ -1,0 +1,113 @@
+﻿@model _123.Models.Unavailable_Days
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Unavailable_Days</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MondayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MondayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MondayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MondayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TuesdayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuesdayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TuesdayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuesdayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WednesdayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WednesdayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WednesdayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WednesdayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThursdayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThursdayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThursdayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThursdayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FridayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FridayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FridayAfrernoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FridayAfrernoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.TeacherName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

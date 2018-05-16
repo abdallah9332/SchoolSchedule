@@ -1,0 +1,106 @@
+﻿@model _123.Models.Teacher
+@{
+    //ViewBag.Title = "Index";
+    Layout = null;
+    //if (Session["UserId"] == null)
+    //{
+    //    Response.Redirect("~/Login/Index");
+    //}
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        #login-dev {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        #pic {
+            position: absolute;
+            left: 45%;
+            top: 22%;
+            padding: 10px 10px;
+        }
+
+        #title {
+            position: absolute;
+            left: 39%;
+            top: 13%;
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    @*<div id="title">
+            <h1>Çukurova University</h1>
+        </div>*@
+    @*<div id="pic">
+
+        @*<img src="/images/icon.jpg" alt="HTML5 Icon" style="width:100px;height:100px">*@
+    @*</div>**@
+    <div id="login-dev">
+        @using (Html.BeginForm("Authurize", "Login", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    @*<td style="text-decoration:underline">App name</td>*@
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.TeacherName)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.TeacherName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.TeacherName)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password)</td>
+                    <td>@Html.EditorFor(model => model.Password)</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="name" value="Login" />
+                        <input type="reset" name="name" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>

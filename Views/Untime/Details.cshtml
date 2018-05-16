@@ -1,0 +1,67 @@
+﻿@model _123.Models.Unavaliable_Time
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Unavaliable_Time</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Morning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Morning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Noon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Noon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Afternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Night)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Night)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.TeacherName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Teacher_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

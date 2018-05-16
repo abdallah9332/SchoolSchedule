@@ -1,0 +1,9 @@
+﻿@model _123.Models.Course
+@{
+    ViewBag.Title = "Semester";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Semester</h2>
+
+@Html.ActionLink("Details", "Details", new { id = Model.Course_ID }) |

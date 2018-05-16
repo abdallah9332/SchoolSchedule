@@ -1,0 +1,111 @@
+﻿@model  _123.Models.Course
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Course</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Teacher_ID, "Teacher name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Teacher_ID", String.Empty)
+                @Html.ValidationMessageFor(model => model.Teacher_ID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CourseName)
+                @Html.ValidationMessageFor(model => model.CourseName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseCode, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CourseCode)
+                @Html.ValidationMessageFor(model => model.CourseCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberOfStudent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumberOfStudent)
+                @Html.ValidationMessageFor(model => model.NumberOfStudent)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WhichYear, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("WhichYear", new List<SelectListItem>{
+                new SelectListItem{Text="First year",Value="1"},
+                new SelectListItem{Text="Second year",Value="2"},
+                new SelectListItem{Text="Third year",Value="3"},
+                new SelectListItem{Text="Fourth year",Value="4"},
+
+
+           })                
+                @Html.ValidationMessageFor(model => model.WhichYear)
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WhichSemester, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("WhichSemester",new List<SelectListItem>{
+                new SelectListItem{Text="semester 1",Value="1"},
+                new SelectListItem{Text="semester 2",Value="2"},
+                
+                  
+           })
+                @Html.ValidationMessageFor(model => model.WhichSemester)
+            </div>
+        </div>
+
+   
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeOfLesson, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TypeOfLesson", new List<SelectListItem>{
+                new SelectListItem{Text="Lesson",Value="Lecture"},
+                new SelectListItem{Text="Lab",Value="Lab"},
+                
+
+           })
+                @Html.ValidationMessageFor(model => model.TypeOfLesson)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

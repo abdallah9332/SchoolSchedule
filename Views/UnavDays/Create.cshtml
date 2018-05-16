@@ -1,0 +1,122 @@
+﻿@model _123.Models.Unavailable_Days
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Unavailable_Days</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Teacher_ID, "Teacher_ID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Teacher_ID", String.Empty)
+                @Html.ValidationMessageFor(model => model.Teacher_ID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MondayMorning, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MondayMorning)
+                @Html.ValidationMessageFor(model => model.MondayMorning)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MondayAfternoon, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MondayAfternoon)
+                @Html.ValidationMessageFor(model => model.MondayAfternoon)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TuesdayMorning, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TuesdayMorning)
+                @Html.ValidationMessageFor(model => model.TuesdayMorning)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TuesdayAfternoon, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TuesdayAfternoon)
+                @Html.ValidationMessageFor(model => model.TuesdayAfternoon)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WednesdayMorning, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WednesdayMorning)
+                @Html.ValidationMessageFor(model => model.WednesdayMorning)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WednesdayAfternoon, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WednesdayAfternoon)
+                @Html.ValidationMessageFor(model => model.WednesdayAfternoon)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ThursdayMorning, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ThursdayMorning)
+                @Html.ValidationMessageFor(model => model.ThursdayMorning)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ThursdayAfternoon, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ThursdayAfternoon)
+                @Html.ValidationMessageFor(model => model.ThursdayAfternoon)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FridayMorning, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FridayMorning)
+                @Html.ValidationMessageFor(model => model.FridayMorning)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FridayAfrernoon, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FridayAfrernoon)
+                @Html.ValidationMessageFor(model => model.FridayAfrernoon)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

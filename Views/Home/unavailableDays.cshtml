@@ -1,0 +1,154 @@
+﻿@*@*@model IEnumerable<_123.Models.Days>
+@{
+    ViewBag.Title = "unavailableDays";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<h2>unavailableDays</h2>
+
+<table>
+    <tr>
+        <th>Select a teacher</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+
+    </tr>
+    <tr>
+        <td>@Html.DropDownList("Uavaliable_Days", new List<SelectListItem> {
+new SelectListItem{Text ="Ayse ozel",Value="5"},
+new SelectListItem{Text ="Zekeriya Tufekci",Value="6"},
+new SelectListItem{Text ="Ramazan Coban",Value="7"},
+new SelectListItem{Text ="Fatih Akay",Value="8"},
+new SelectListItem{Text ="Mustafa Oral",Value="9"},
+new SelectListItem{Text ="Umut Orhan",Value="10"},
+new SelectListItem{Text ="Buse Melis Ozildirim",Value="11"},
+new SelectListItem{Text ="Serkan Kartal",Value="12"},
+new SelectListItem{Text ="Firat Kumru",Value="13"},
+new SelectListItem{Text ="Serhat Hizlisoy",Value="14"},
+new SelectListItem{Text ="Baris Ata",Value="15"},
+new SelectListItem{Text ="Emre Kilinc",Value="16"},
+new SelectListItem{Text ="Mashar Cenk Gencal",Value="17"},
+new SelectListItem{Text ="Abbas Elmas",Value="18"},
+new SelectListItem{Text ="Mettin Ozdemir",Value="19"},
+new SelectListItem{Text ="Sehmus Findik",Value="20"}
+}, "Select a teacher")</td>
+        <td><input type="checkbox" name="Monday" />&nbsp;</td>
+        <td><input type="checkbox" name="Tuesday" />&nbsp;</td>
+        <td><input type="checkbox" name="Wednesday" />&nbsp;</td>
+        <td><input type="checkbox" name="Thursday" />&nbsp;</td>
+        <td><input type="checkbox" name="Friday" />&nbsp;</td>
+
+    </tr>
+  
+</table>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<script>
+    $("#Uavaliable_Days").change(function () {
+        var val = $("#Uavaliable_Days").val();
+        window.location = "unavailableDays?teacher=" + val;
+    });
+</script>*@
+
+
+
+@model List<_123.Models.Unavailable_Days>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+
+
+<table>
+
+    <tr>
+        <td>
+            @Html.DropDownList("Uavaliable_Days", new List<SelectListItem> {
+new SelectListItem{Text ="Ayse ozel",Value="5"},
+new SelectListItem{Text ="Zekeriya Tufekci",Value="6"},
+new SelectListItem{Text ="Ramazan Coban",Value="7"},
+new SelectListItem{Text ="Fatih Akay",Value="8"},
+new SelectListItem{Text ="Mustafa Oral",Value="9"},
+new SelectListItem{Text ="Umut Orhan",Value="10"},
+new SelectListItem{Text ="Buse Melis Ozildirim",Value="11"},
+new SelectListItem{Text ="Serkan Kartal",Value="12"},
+new SelectListItem{Text ="Firat Kumru",Value="13"},
+new SelectListItem{Text ="Serhat Hizlisoy",Value="14"},
+new SelectListItem{Text ="Baris Ata",Value="15"},
+new SelectListItem{Text ="Emre Kilinc",Value="16"},
+new SelectListItem{Text ="Mashar Cenk Gencal",Value="17"},
+new SelectListItem{Text ="Abbas Elmas",Value="18"},
+new SelectListItem{Text ="Mettin Ozdemir",Value="19"},
+new SelectListItem{Text ="Sehmus Findik",Value="20"}
+}, "Select a teacher")
+</table>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<script>
+    $("#Uavaliable_Days").change(function () {
+        var val = $("#Uavaliable_Days").val();
+        window.location = "unavailableDays?teacher=" + val;
+    });
+</script>
+
+
+
+    @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+    {
+        <table>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBoxFor(m => m[i].IsSelected)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m[i].Day_Name)
+                        @Html.HiddenFor(m => m[i].Day_ID)
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <input type="submit" value="Save" />
+    }
+</body>
+</html>*@

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<_123.Models.Unavailable_Days>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MondayMorning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MondayAfternoon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TuesdayMorning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TuesdayAfternoon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WednesdayMorning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WednesdayAfternoon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThursdayMorning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThursdayAfternoon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FridayMorning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FridayAfrernoon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MondayMorning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MondayAfternoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TuesdayMorning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TuesdayAfternoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WednesdayMorning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WednesdayAfternoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThursdayMorning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThursdayAfternoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FridayMorning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FridayAfrernoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Teacher_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Teacher_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Teacher_ID })
+        </td>
+    </tr>
+}
+
+</table>

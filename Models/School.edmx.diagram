@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1dee42554cab44deae7677ee1f2c3112" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolModel.Course" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Teacher" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="SchoolModel.FK_Course_Teacher1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SchoolModel.Unavailable_Days" Width="1.5" PointX="3" PointY="8.75" />
+        <AssociationConnector Association="SchoolModel.FK_Unavailable_Days_Teacher" />
+        <EntityTypeShape EntityType="SchoolModel.Classroom" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="SchoolModel.FK_Classroom_Teacher" />
+        <EntityTypeShape EntityType="SchoolModel.Unavaliable_Time" Width="1.5" PointX="3" PointY="12.75" />
+        <AssociationConnector Association="SchoolModel.FK_Unavaliable_Time_Teacher" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

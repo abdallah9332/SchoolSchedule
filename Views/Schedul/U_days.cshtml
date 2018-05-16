@@ -1,0 +1,32 @@
+﻿@*@model _123.Models.daysmodel
+@{
+    ViewBag.Title = "U_days";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>U_days</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        @for (int i=0;i<Model.unavilabeDays.Count;i++)
+        {
+           
+            <td>
+                @Html.CheckBoxFor(model => model.unavilabeDays[i].IsChecked)
+                <label>@Model.unavilabeDays[i].Monday</label>
+                @*<label>@Model.unavilabeDays[i].Thursday</label>
+                <label>@Model.unavilabeDays[i].Tuesday</label>
+                <label>@Model.unavilabeDays[i].Thursday</label>
+                <label>@Model.unavilabeDays[i].Friday</label>*@
+                @Html.HiddenFor(model => model.unavilabeDays[i].Monday)
+                @Html.HiddenFor(model => model.unavilabeDays[i].Teacher_ID)
+
+            </td>
+        }
+
+    </table>
+    
+    
+    <input type="submit" value="submit"/>
+}*@

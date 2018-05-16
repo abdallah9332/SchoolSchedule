@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teacher_ID" Type="Int32" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WhichYear" Type="Int32" />
+    <Property Name="WhichSemester" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfStudent" Type="Int32" />
+    <Property Name="TypeOfLesson" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Course_Teacher1" FromRole="Course" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Teacher_ID" />
+    </Key>
+    <Property Name="Teacher_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TeacherLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Course_Teacher1" FromRole="Teacher" ToRole="Course" />
+    <NavigationProperty Name="Unavailable_Days" Relationship="SchoolModel.FK_Unavailable_Days_Teacher" FromRole="Teacher" ToRole="Unavailable_Days" />
+    <NavigationProperty Name="Classrooms" Relationship="SchoolModel.FK_Classroom_Teacher" FromRole="Teacher" ToRole="Classroom" />
+    <NavigationProperty Name="Unavaliable_Time" Relationship="SchoolModel.FK_Unavaliable_Time_Teacher" FromRole="Teacher" ToRole="Unavaliable_Time" />
+  </EntityType>
+  <Association Name="FK_Course_Teacher1">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SchoolEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="FK_Course_Teacher1" Association="Self.FK_Course_Teacher1">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <EntitySet Name="Unavailable_Days" EntityType="SchoolModel.Unavailable_Days" />
+    <AssociationSet Name="FK_Unavailable_Days_Teacher" Association="SchoolModel.FK_Unavailable_Days_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Unavailable_Days" EntitySet="Unavailable_Days" />
+    </AssociationSet>
+    <EntitySet Name="Classrooms" EntityType="SchoolModel.Classroom" />
+    <AssociationSet Name="FK_Classroom_Teacher" Association="SchoolModel.FK_Classroom_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Classroom" EntitySet="Classrooms" />
+    </AssociationSet>
+    <EntitySet Name="Unavaliable_Time" EntityType="SchoolModel.Unavaliable_Time" />
+    <AssociationSet Name="FK_Unavaliable_Time_Teacher" Association="SchoolModel.FK_Unavaliable_Time_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Unavaliable_Time" EntitySet="Unavaliable_Time" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Unavailable_Days">
+    <Key>
+      <PropertyRef Name="Teacher_ID" />
+    </Key>
+    <Property Name="Teacher_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="SchoolModel.FK_Unavailable_Days_Teacher" FromRole="Unavailable_Days" ToRole="Teacher" />
+    <Property Name="MondayMorning" Type="Boolean" />
+    <Property Name="MondayAfternoon" Type="Boolean" />
+    <Property Name="TuesdayMorning" Type="Boolean" />
+    <Property Name="TuesdayAfternoon" Type="Boolean" />
+    <Property Name="WednesdayMorning" Type="Boolean" />
+    <Property Name="WednesdayAfternoon" Type="Boolean" />
+    <Property Name="ThursdayMorning" Type="Boolean" />
+    <Property Name="ThursdayAfternoon" Type="Boolean" />
+    <Property Name="FridayMorning" Type="Boolean" />
+    <Property Name="FridayAfrernoon" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_Unavailable_Days_Teacher">
+    <End Type="SchoolModel.Teacher" Role="Teacher" Multiplicity="1" />
+    <End Type="SchoolModel.Unavailable_Days" Role="Unavailable_Days" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Unavailable_Days">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Classroom">
+    <Key>
+      <PropertyRef Name="Classroom_ID" />
+    </Key>
+    <Property Name="Classroom_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassroomName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Teacher_ID" Type="Int32" />
+    <Property Name="Capacity" Type="Int32" />
+    <NavigationProperty Name="Teacher" Relationship="SchoolModel.FK_Classroom_Teacher" FromRole="Classroom" ToRole="Teacher" />
+  </EntityType>
+  <Association Name="FK_Classroom_Teacher">
+    <End Type="SchoolModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+    <End Type="SchoolModel.Classroom" Role="Classroom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Classroom">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Unavaliable_Time">
+    <Key>
+      <PropertyRef Name="Teacher_ID" />
+    </Key>
+    <Property Name="Teacher_ID" Type="Int32" Nullable="false" />
+    <Property Name="Morning" Type="Boolean" />
+    <Property Name="Noon" Type="Boolean" />
+    <Property Name="Afternoon" Type="Boolean" />
+    <Property Name="Evning" Type="Boolean" />
+    <Property Name="Night" Type="Boolean" />
+    <NavigationProperty Name="Teacher" Relationship="SchoolModel.FK_Unavaliable_Time_Teacher" FromRole="Unavaliable_Time" ToRole="Teacher" />
+  </EntityType>
+  <Association Name="FK_Unavaliable_Time_Teacher">
+    <End Type="SchoolModel.Teacher" Role="Teacher" Multiplicity="1" />
+    <End Type="SchoolModel.Unavaliable_Time" Role="Unavaliable_Time" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Unavaliable_Time">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

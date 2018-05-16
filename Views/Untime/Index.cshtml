@@ -1,0 +1,64 @@
+﻿@model IEnumerable<_123.Models.Unavaliable_Time>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Morning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Noon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Afternoon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Night)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Morning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Noon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afternoon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Evning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Night)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Teacher_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Teacher_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Teacher_ID })
+        </td>
+    </tr>
+}
+
+</table>

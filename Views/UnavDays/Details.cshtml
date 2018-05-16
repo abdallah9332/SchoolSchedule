@@ -1,0 +1,107 @@
+﻿@model _123.Models.Unavailable_Days
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Unavailable_Days</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MondayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MondayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MondayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MondayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TuesdayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuesdayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TuesdayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuesdayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WednesdayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WednesdayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WednesdayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WednesdayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThursdayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThursdayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThursdayAfternoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThursdayAfternoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FridayMorning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FridayMorning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FridayAfrernoon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FridayAfrernoon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.TeacherName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Teacher_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

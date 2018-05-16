@@ -1,0 +1,53 @@
+﻿@model IEnumerable<_123.Models.CourseViewModel>
+@{
+    ViewBag.Title = "ToAddd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ToAddd</h2>
+
+
+@Html.DropDownList("Course", new List<SelectListItem> { 
+new SelectListItem{Text ="semester 1",Value="1"},
+new SelectListItem{Text ="semester 2",Value="2"}
+},"Select Semester")
+
+<div class="container" style="width:60%;margin-top:5%">
+    @if(Model!=null)
+    { 
+    <table class="table table-striped">
+        <tr>
+            <th>course name</th>
+            <th>course code</th>
+            <th>type of lesson</th>
+            <th>teacher name</th>
+            <th>Year</th>
+
+       
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CourseName</td>
+                    <td>@item.CourseCode</td>
+                    <td>@item.TypeOfLesson</td>
+                    <td>@item.TeacherName</td>
+                    <td>@item.WhichYear</td>
+
+                </tr>   
+            }
+        </tbody>
+    </table> 
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<script>
+    $("#Course").change(function () {
+        var val = $("#Course").val();
+        window.location = "ToAddd?semester="+val;
+    });
+</script>

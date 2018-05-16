@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolModelStoreContainer" CdmEntityContainer="SchoolEntities1">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="SchoolModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="Course_ID" ColumnName="Course_ID" />
+          <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+          <ScalarProperty Name="WhichYear" ColumnName="WhichYear" />
+          <ScalarProperty Name="WhichSemester" ColumnName="WhichSemester" />
+          <ScalarProperty Name="NumberOfStudent" ColumnName="NumberOfStudent" />
+          <ScalarProperty Name="TypeOfLesson" ColumnName="TypeOfLesson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="SchoolModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+          <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+          <ScalarProperty Name="TeacherLastName" ColumnName="TeacherLastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unavailable_Days">
+      <EntityTypeMapping TypeName="SchoolModel.Unavailable_Days">
+        <MappingFragment StoreEntitySet="Unavailable_Days">
+          <ScalarProperty Name="FridayAfrernoon" ColumnName="FridayAfrernoon" />
+          <ScalarProperty Name="FridayMorning" ColumnName="FridayMorning" />
+          <ScalarProperty Name="ThursdayAfternoon" ColumnName="ThursdayAfternoon" />
+          <ScalarProperty Name="ThursdayMorning" ColumnName="ThursdayMorning" />
+          <ScalarProperty Name="WednesdayAfternoon" ColumnName="WednesdayAfternoon" />
+          <ScalarProperty Name="WednesdayMorning" ColumnName="WednesdayMorning" />
+          <ScalarProperty Name="TuesdayAfternoon" ColumnName="TuesdayAfternoon" />
+          <ScalarProperty Name="TuesdayMorning" ColumnName="TuesdayMorning" />
+          <ScalarProperty Name="MondayAfternoon" ColumnName="MondayAfternoon" />
+          <ScalarProperty Name="MondayMorning" ColumnName="MondayMorning" />
+          <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classrooms">
+      <EntityTypeMapping TypeName="SchoolModel.Classroom">
+        <MappingFragment StoreEntitySet="Classroom">
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+          <ScalarProperty Name="ClassroomName" ColumnName="ClassroomName" />
+          <ScalarProperty Name="Classroom_ID" ColumnName="Classroom_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unavaliable_Time">
+      <EntityTypeMapping TypeName="SchoolModel.Unavaliable_Time">
+        <MappingFragment StoreEntitySet="Unavaliable_Time">
+          <ScalarProperty Name="Night" ColumnName="Night" />
+          <ScalarProperty Name="Evning" ColumnName="Evning" />
+          <ScalarProperty Name="Afternoon" ColumnName="Afternoon" />
+          <ScalarProperty Name="Noon" ColumnName="Noon" />
+          <ScalarProperty Name="Morning" ColumnName="Morning" />
+          <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

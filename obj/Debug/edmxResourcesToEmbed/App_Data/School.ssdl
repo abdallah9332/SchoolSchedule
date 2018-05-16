@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Classroom">
+    <Key>
+      <PropertyRef Name="Classroom_ID" />
+    </Key>
+    <Property Name="Classroom_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassroomName" Type="varchar" MaxLength="50" />
+    <Property Name="Teacher_ID" Type="int" />
+    <Property Name="Capacity" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'School.dbo.Classroom_COURSE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Classroom_COURSE">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="Classroom_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teacher_ID" Type="int" />
+    <Property Name="CourseName" Type="varchar" MaxLength="50" />
+    <Property Name="CourseCode" Type="varchar" MaxLength="50" />
+    <Property Name="WhichYear" Type="int" />
+    <Property Name="WhichSemester" Type="int" />
+    <Property Name="NumberOfStudent" Type="int" />
+    <Property Name="TypeOfLesson" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Teacher_ID" />
+    </Key>
+    <Property Name="Teacher_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeacherName" Type="varchar" MaxLength="50" />
+    <Property Name="TeacherLastName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'School.dbo.Unavailable_DAYS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Unavailable_DAYS">
+          <Property Name="Monday" Type="varchar" MaxLength="50" />
+          <Property Name="Tuesday" Type="varchar" MaxLength="50" />
+          <Property Name="Wednesday" Type="varchar" MaxLength="50" />
+          <Property Name="Thuresday" Type="varchar" MaxLength="50" />
+          <Property Name="Friday" Type="varchar" MaxLength="50" />
+          <Property Name="Saturday" Type="varchar" MaxLength="50" />
+          <Property Name="Sunday" Type="varchar" MaxLength="50" />
+          <Property Name="Teacher_ID" Type="int" />
+        </EntityType>-->
+  <Association Name="FK_Classroom_COURSE_Classroom1">
+    <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+    <End Role="Classroom_COURSE" Type="Self.Classroom_COURSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classroom">
+        <PropertyRef Name="Classroom_ID" />
+      </Principal>
+      <Dependent Role="Classroom_COURSE">
+        <PropertyRef Name="Classroom_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classroom_COURSE_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Classroom_COURSE" Type="Self.Classroom_COURSE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Classroom_COURSE">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classroom_Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Classroom" Type="Self.Classroom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Classroom">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Teacher1">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Teacher_ID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'School.dbo.Unavailable_DAYS' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Unavailable_DAYS_Teacher" />-->
+  <EntityContainer Name="SchoolModelStoreContainer">
+    <EntitySet Name="Classroom" EntityType="Self.Classroom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Classroom_COURSE" EntityType="Self.Classroom_COURSE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Classroom_COURSE].[Course_ID] AS [Course_ID], 
+    [Classroom_COURSE].[Classroom_ID] AS [Classroom_ID]
+    FROM [dbo].[Classroom_COURSE] AS [Classroom_COURSE]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Classroom_COURSE_Classroom1" Association="Self.FK_Classroom_COURSE_Classroom1">
+      <End Role="Classroom" EntitySet="Classroom" />
+      <End Role="Classroom_COURSE" EntitySet="Classroom_COURSE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classroom_COURSE_Course" Association="Self.FK_Classroom_COURSE_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Classroom_COURSE" EntitySet="Classroom_COURSE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classroom_Teacher" Association="Self.FK_Classroom_Teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Classroom" EntitySet="Classroom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Teacher1" Association="Self.FK_Course_Teacher1">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
